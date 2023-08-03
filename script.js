@@ -92,5 +92,11 @@ function render() {
 }
 
 function deletePerson(index) {
-  const filterPerson = console.log(JSON.parse(index));
+  let data = JSON.parse(localStorage.getItem("person"));
+  data = data.filter((item, idx) => index !== idx);
+  localStorage.setItem("person", JSON.stringify(data));
+  if (!data.length) {
+    listContainer.style.display = "none";
+  }
+  render();
 }
