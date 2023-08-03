@@ -49,3 +49,13 @@ body {
 .btn:hover {
   background-color: #464e46;
 }
+.list-container{
+  display: none;
+  background: #3b3e3b;
+  border-radius: 10px; 
+  width: 80%;
+  transition: 0.2s;
+}
+.list-contacts{
+  list-style-type: none;
+}
