@@ -49,13 +49,38 @@ body {
 .btn:hover {
   background-color: #464e46;
 }
-.list-container{
+.list-container {
   display: none;
   background: #3b3e3b;
-  border-radius: 10px; 
+  border-radius: 10px;
   width: 80%;
   transition: 0.2s;
 }
-.list-contacts{
+.list-contacts {
   list-style-type: none;
+}
+.item-right {
+  display: flex;
+}
+.btn-container {
+  display: flex;
+  align-items: center;
+  margin: 0 20px;
+}
+
+.btn-delete {
+  background-color: #d71313;
+  color: #eeeded;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 15px;
+  font-size: 20px;
+}
+.btn-edit {
+  background-color: #191a19;
+  color: #4e9f3d;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 15px;
+  font-size: 20px;
 }

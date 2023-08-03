@@ -38,10 +38,13 @@ function render() {
   newData.forEach((item, index) => {
     // Создаем элементы
     const li = document.createElement("li");
+    // Правая часть item
+    const liRight = document.createElement("div");
     const liText = document.createElement("div");
     const liName = document.createElement("h3");
     const liDescription = document.createElement("p");
     const liImg = document.createElement("img");
+    // Левая часть item
     const liBtns = document.createElement("div");
     const btnDelete = document.createElement("button");
     const btnEdit = document.createElement("button");
@@ -51,26 +54,43 @@ function render() {
     liText.className = "li-text";
     btnDelete.className = "btn-delete";
     btnEdit.className = "btn-edit";
+    liBtns.className = "btn-container";
     li.className = "list-item";
+    liRight.className = "item-right";
     // Текст внутри элемента
     liName.innerText = `Name: ${item.firstName} ${item.lastName}`;
     liDescription.innerText = `Phone number: ${item.phoneNumber}`;
+    btnDelete.innerText = "Delete";
+    btnEdit.innerText = "Edit";
     // Установка атрибутов
     liImg.setAttribute("src", "./img/class-warrior.svg");
+    liDescription.setAttribute("type", "tel");
     // Стили
     listContainer.style.display = "block";
     liImg.style.width = "50px";
     liImg.style.marginRight = "10px";
     li.style.display = "flex";
+    li.style.justifyContent = "space-between";
+    btnEdit.style.marginLeft = "5px";
 
-    btnDelete.addEventListener("click", () => {});
+    btnDelete.addEventListener("click", () => {
+      deletePerson(index);
+    });
     btnEdit.addEventListener("click", () => {});
 
     // Добавляем элементы внутрь другого
     liText.append(liName);
     liText.append(liDescription);
-    li.appendChild(liImg);
-    li.appendChild(liText);
+    liBtns.append(btnDelete);
+    liBtns.append(btnEdit);
+    liRight.append(liImg);
+    liRight.append(liText);
+    li.appendChild(liRight);
+    li.appendChild(liBtns);
     listContacts.appendChild(li);
   });
+}
+
+function deletePerson(index) {
+  const filterPerson = console.log(JSON.parse(index));
 }
