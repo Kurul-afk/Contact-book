@@ -76,7 +76,9 @@ function render() {
     btnDelete.addEventListener("click", () => {
       deletePerson(index);
     });
-    btnEdit.addEventListener("click", () => {});
+    btnEdit.addEventListener("click", () => {
+      editPerson(index);
+    });
 
     // Добавляем элементы внутрь другого
     liText.append(liName);
@@ -91,6 +93,35 @@ function render() {
   });
 }
 
+function editPerson(index) {
+  modal.style.display = "block";
+  let data = JSON.parse(localStorage.getItem("person"));
+  const editedItem = data[index];
+  modalInp[0].value = editedItem.firstName;
+  modalInp[1].value = editedItem.lastName;
+  modalInp[2].value = editedItem.phoneNumber;
+
+  modalBtn.addEventListener("click", () => {
+    const firstName = modalInp[0].value.trim();
+    const lastName = modalInp[1].value.trim();
+    const phoneNumber = modalInp[2].value.trim();
+    if (!firstName || !lastName || !phoneNumber) {
+      alert("Введите все данные");
+      return;
+    }
+
+    // Обновляем значения контакта в массиве data
+    editedItem.firstName = firstName;
+    editedItem.lastName = lastName;
+    editedItem.phoneNumber = phoneNumber;
+
+    // Сохраняем обновленные данные в localStorage
+    localStorage.setItem("person", JSON.stringify(data));
+    modal.style.display = "none";
+    render();
+  });
+}
+
 function deletePerson(index) {
   let data = JSON.parse(localStorage.getItem("person"));
   data = data.filter((item, idx) => index !== idx);
@@ -100,3 +131,12 @@ function deletePerson(index) {
   }
   render();
 }
+
+const modalBtn = document.querySelector(".modalBtn");
+const modal = document.querySelector(".modal");
+const closeModalBtn = document.querySelector(".close");
+const modalInp = document.querySelectorAll(".modal-inp");
+
+closeModalBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
