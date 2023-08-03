@@ -93,6 +93,11 @@ function render() {
   });
 }
 
+const modalBtn = document.querySelector(".modalBtn");
+const modal = document.querySelector(".modal");
+const closeModalBtn = document.querySelector(".close");
+const modalInp = document.querySelectorAll(".modal-inp");
+
 function editPerson(index) {
   modal.style.display = "block";
   let data = JSON.parse(localStorage.getItem("person"));
@@ -131,11 +136,6 @@ function deletePerson(index) {
   }
   render();
 }
-
-const modalBtn = document.querySelector(".modalBtn");
-const modal = document.querySelector(".modal");
-const closeModalBtn = document.querySelector(".close");
-const modalInp = document.querySelectorAll(".modal-inp");
 
 closeModalBtn.addEventListener("click", () => {
   modal.style.display = "none";
